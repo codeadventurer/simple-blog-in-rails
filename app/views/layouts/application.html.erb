@@ -10,6 +10,11 @@
   </head>
 
   <body>
+  <% if flash[:success] %>
+    <p><%= flash[:success] %></p>
+  <% end %>
     <%= yield %>
+  
+   <%= @name if @name.present? %>
   </body>
 </html>
