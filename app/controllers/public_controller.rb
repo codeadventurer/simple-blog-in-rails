@@ -4,4 +4,12 @@ class PublicController < ApplicationController
     @posts = Post.all
   end
 
+  def about
+  end
+
+  def blog
+  end
+
+  def contact
+  end
 end
