@@ -1,1 +1,13 @@
-<h1>Hello world!</h1>
+<div class='mt-5'>
+  <h2>Latest posts</h2>
+
+  <% @posts.each do |post| %>
+    <h3> <%= link_to post.title, post_path(post) %> </h3>
+    <p> <%=  post.summary %> </p>
+  <% end %>
+
+<button class='btn btn-primary'>
+  <%= link_to 'New Post', new_post_path, class: 'text-white text-decoration-none' %>
+</button>
+</div>
+
