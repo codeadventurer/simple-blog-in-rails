@@ -7,6 +7,13 @@
     <%= render partial: "posts/post", locals: { post: post} %>
   <% end %>
 
+  <h5>Categories</h5>
+  <% @categories.each do |category| %>
+    <button><%= category.title %> - <%= category.total %></button>
+  <% end %>
+
+  <h5>Total posts: <%= Post.total %> </h5>
+
 <button class='btn btn-primary'>
   <%= link_to 'New Post', new_post_path, class: 'text-white text-decoration-none' %>
 </button>

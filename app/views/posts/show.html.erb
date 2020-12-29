@@ -4,9 +4,17 @@
   <%= @post.title %>
 </h1>
 
+<h5><%= @post.details %></h5>
+
 <p>
   <%= simple_format @post.body %>
 </p>
+
+<%# <h4>Comments</h4>
+<% @post.comments.each do |comment| %>
+  <%# <p> <%= comment.body </p> %>
+<%# <% end %> 
+
 
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
