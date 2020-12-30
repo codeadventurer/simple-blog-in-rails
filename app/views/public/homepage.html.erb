@@ -1,20 +1,24 @@
 <% content_for :page_title, "Home" %>
-
-<div>
-  <h2>Latest posts</h2>
-
-  <% @posts.each do |post| %>
-    <%= render partial: "posts/post", locals: { post: post} %>
-  <% end %>
-
-  <h5>Categories</h5>
-  <% @categories.each do |category| %>
-    <button><%= category.title %> - <%= category.total %></button>
-  <% end %>
-
-  <h5>Total posts: <%= Post.total %> </h5>
-
-<button class='btn btn-primary'>
-  <%= link_to 'New Post', new_post_path, class: 'text-white text-decoration-none' %>
-</button>
+<div class="row">
+  <div class="col-8">
+    <h4>Latest posts</h4>
+    <div class="my-3">
+      <h5>Categories</h5>
+      <% @categories.each do |category| %>
+        <button class="btn btn-outline-primary"><%= category.title %> - <%= category.total_count %></button>
+      <% end %>
+    </div>
+    <% @posts.each do |post| %>
+      <%= render partial: "posts/post", locals: { post: post} %>
+    <% end %>
+    <h5>Total posts: <%= Post.total %> </h5>
+    <button class='btn btn-primary'>
+      <%= link_to 'New Post', new_post_path, class: 'text-white text-decoration-none' %>
+    </button>
+  </div>
+  <div class="col-4 mb-5">
+    <h4>About</h4>
+    <%= image_tag "photo-laptop.jpeg", alt:"Blog image", class: "img-fluid"%>
+    <p>it amet justo donec enim diam vulputate ut pisque egesuis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum non consectetur a erat</p>
+  </div>
 </div>

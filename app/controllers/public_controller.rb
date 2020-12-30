@@ -1,7 +1,7 @@
 class PublicController < ApplicationController
 
   def homepage
-    @posts = Post.all
+    @posts = Post.active.order_by_latest_first.limit_5
     @categories = Category.all
   end
 
