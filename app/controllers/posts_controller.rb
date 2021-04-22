@@ -10,7 +10,15 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
-
+    respond_to do |format|
+      format.html
+      format.json { 
+        render json: @post.to_json
+      }
+      format.text { 
+        render plain: @post.title
+      }
+    end
   end
 
   # GET /posts/new
@@ -75,6 +83,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :summary, :body, :category, :category_id, :active)
+      params.require(:post).permit(:title, :summary, :body, :category_id, :active)
     end
 end
