@@ -64,7 +64,6 @@ class PostsController < ApplicationController
 
   def save_post_view
     # store view count for post
-    Rails.logger.info "🚒"
     @post.increment(:views, 1).save
   end
 
