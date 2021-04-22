@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :save_post_view]
 
   # GET /posts
   # GET /posts.json
@@ -60,6 +60,12 @@ class PostsController < ApplicationController
       format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def save_post_view
+    # store view count for post
+    Rails.logger.info "🚒"
+    @post.increment(:views, 1).save
   end
 
   private
