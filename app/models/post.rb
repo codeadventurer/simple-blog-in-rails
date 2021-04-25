@@ -6,6 +6,7 @@ class Post < ApplicationRecord
 
   # belongs_to :user
   belongs_to :category
+  belongs_to :account
   # has_many :comments
 
   # if terms and conditions need to be true

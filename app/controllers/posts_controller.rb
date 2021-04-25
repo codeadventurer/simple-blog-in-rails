@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy, :save_post_view]
+  before_action :authenticate_account!, except: [:show]
 
   # GET /posts
   # GET /posts.json
@@ -34,6 +35,7 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
+    @post.account_id = current_account.id
 
     respond_to do |format|
       if @post.save
