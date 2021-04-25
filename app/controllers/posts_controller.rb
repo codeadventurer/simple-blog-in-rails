@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy, :save_post_view]
   before_action :authenticate_account!, except: [:show]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :save_post_view]
+  before_action :can_modify_post, only: [:edit, :update, :destroy]
 
   # GET /posts
   # GET /posts.json
@@ -81,6 +82,10 @@ class PostsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])
+    end
+
+    def can_modify_post
+      redirect_back(fallback_location: root_path) and return unless @post.account_id == current_account.id
     end
 
     # Only allow a list of trusted parameters through.
