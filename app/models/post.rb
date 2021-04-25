@@ -26,7 +26,7 @@ class Post < ApplicationRecord
 
   # instance method
   def details
-    "This post was created on #{ created_at.strftime('%d.%m.%Y') }"
+    "This post was created by #{created_by} on #{ created_at.strftime('%d.%m.%Y') }"
   end
 
   # class method
@@ -40,4 +40,10 @@ class Post < ApplicationRecord
   def update_total_posts_count
     category.increment(:total_count, 1).save
   end
+
+  def created_by
+    return "Admin" unless account
+    "#{account.first_name} #{account.last_name}"
+  end
+
 end
